@@ -1,0 +1,2 @@
+WALLET_LOCATION = (SOURCE = (METHOD = file) (METHOD_DATA = (DIRECTORY="/usr/lib/oracle/18.3/client64/lib/network/admin")))
+SSL_SERVER_DN_MATCH=yes
