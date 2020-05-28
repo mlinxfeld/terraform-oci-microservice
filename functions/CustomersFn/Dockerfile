@@ -47,11 +47,16 @@ ENV PYTHONPATH=/python
 
 ENV LD_LIBRARY_PATH=/usr/lib/oracle/18.3/client64/lib
 
-RUN echo $LD_LIBRARY_PATH
-
 ENV TNS_ADMIN=/usr/lib/oracle/18.3/client64/lib/network/admin
 
-RUN echo $TNS_ADMIN
+ARG ARG_ATP_USER=admin1
+ENV OCIFN_ATP_USER=$ARG_ATP_USER
+
+ARG ARG_ATP_PASSWORD=password1
+ENV OCIFN_ATP_PASSWORD=$ARG_ATP_PASSWORD
+
+ARG ARG_ATP_ALIAS=alias1
+ENV OCIFN_ATP_ALIAS=$ARG_ATP_ALIAS
 
 RUN apt-get install libaio1
 

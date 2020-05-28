@@ -8,6 +8,10 @@ variable "private_key_oci" {}
 variable "public_key_oci" {}
 variable "atp_password" {}
 
+variable "atp_user" {
+ default = "admin"
+}
+
 variable "VCN-CIDR" {
   default = "10.0.0.0/16"
 }

@@ -5,16 +5,8 @@ resource "null_resource" "FoggyKitchenFnSetup" {
     command = "echo '${var.ocir_user_password}' |  docker login ${var.ocir_docker_repository} --username ${var.ocir_namespace}/${var.ocir_user_name} --password-stdin"
   }
 
-  #provisioner "local-exec" {
-  #   command = "sed -i 's/atp_password/${var.atp_password}/g' functions/CustomersFn/func.py"
-  #}
-
-  #provisioner "local-exec" {
-  #   command = "sed -i 's/atp_alias/${var.FoggyKitchen_ATP_database_db_name}_medium/g' functions/CustomersFn/func.py"
-  #}
-
   provisioner "local-exec" {
-    command = "fn build --verbose"
+    command = "fn build --verbose --build-arg ARG_ATP_USER=${var.atp_user} --build-arg ARG_ATP_PASSWORD=${var.atp_password} --build-arg ARG_ATP_ALIAS=${var.FoggyKitchen_ATP_database_db_name}_medium"
     working_dir = "functions/CustomersFn"
   }
 

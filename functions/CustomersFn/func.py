@@ -17,13 +17,17 @@ def handler(ctx, data: io.BytesIO=None):
 def dbaccess(data):
     
     try: 
-    	connection = cx_Oracle.connect('admin', 'BEstrO0ng_#11', 'fkatpdb5_medium')
+    	atp_user = os.getenv('OCIFN_ATP_USER')
+    	atp_password = os.getenv('OCIFN_ATP_PASSWORD')
+    	atp_alias = os.getenv('OCIFN_ATP_ALIAS')
+
+    	connection = cx_Oracle.connect(atp_user, atp_password, atp_alias)
     	cursor = connection.cursor()
     	rs = cursor.execute("select name from v$database")
     	dbname = rs.fetchone()
     	cursor.close()
     	connection.close()
     except Exception as e:
-        return {"Result": "Not connected to ATP! Exception{}".format(str(e)),}
+        return {"Result": "Not connected to ATP! Exception: {}".format(str(e)),}
 
     return {"Result": "I am connected to ATP Database via private endpoint! ATP dbname taken from v$database view is {}".format(dbname[0]),}
