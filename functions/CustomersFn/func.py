@@ -23,11 +23,12 @@ def dbaccess(data):
 
     	connection = cx_Oracle.connect(atp_user, atp_password, atp_alias)
     	cursor = connection.cursor()
-    	rs = cursor.execute("select name from v$database")
-    	dbname = rs.fetchone()
+    	rs = cursor.execute("select * from customers")
+    	rows = rs.fetchall()
+    	json_output = json.dumps(rows)
     	cursor.close()
     	connection.close()
     except Exception as e:
         return {"Result": "Not connected to ATP! Exception: {}".format(str(e)),}
 
-    return {"Result": "I am connected to ATP Database via private endpoint! ATP dbname taken from v$database view is {}".format(dbname[0]),}
+    return {"Result": "{}".format(json_output),}

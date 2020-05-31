@@ -14,6 +14,8 @@ resource "local_file" "FoggyKitchen_ATP_database_wallet_file" {
   filename = var.FoggyKitchen_ATP_tde_wallet_zip_file
 }
 
+
+
 output "wallet_password" {
   value = [random_string.wallet_password.result]
 }

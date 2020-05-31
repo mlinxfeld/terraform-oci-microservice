@@ -7,9 +7,14 @@ variable "region" {}
 variable "private_key_oci" {}
 variable "public_key_oci" {}
 variable "atp_password" {}
+variable "atp_admin_password" {}
+
+variable "atp_admin_user" {
+ default = "admin"
+}
 
 variable "atp_user" {
- default = "admin"
+ default = "fkuser"
 }
 
 variable "VCN-CIDR" {
@@ -76,7 +81,7 @@ variable "FoggyKitchen_ATP_database_license_model" {
 }
 
 variable "FoggyKitchen_ATP_tde_wallet_zip_file" {
-  default = "functions/CustomersFn/tde_wallet.zip"
+  default = "tde_wallet.zip"
 }
 
 variable "FoggyKitchen_ATP_database_atp_private_endpoint_label" {
