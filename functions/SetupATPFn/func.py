@@ -41,9 +41,10 @@ def dbaccess(data):
         connection2 = cx_Oracle.connect(atp_user, atp_password, atp_alias)
         cursor2 = connection2.cursor()
         
-        rs = cursor2.execute('''create table customers (custid number, custname varchar2(100))''')
+        rs = cursor2.execute('''create table customers (cust_id number, cust_name varchar2(100))''')
         rs = cursor2.execute('''insert into customers values (1,'First Customer')''')
         rs = cursor2.execute('''insert into customers values (2,'Second Customer')''')
+        rs = cursor2.execute('''insert into customers values (3,'Third Customer')''')
         rs = cursor2.execute('COMMIT')
 
         cursor2.close()
