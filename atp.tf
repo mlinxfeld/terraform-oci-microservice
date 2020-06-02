@@ -18,14 +18,3 @@ data "oci_database_autonomous_databases" "FoggyKitchenATPdatabases" {
   display_name = var.FoggyKitchen_ATP_database_display_name
 }
 
-output "FoggyKitchen_ATP_database_admin_password" {
-   value = var.atp_password
-}
-
-output "FoggyKitchen_ATP_databases" {
-  value = data.oci_database_autonomous_databases.FoggyKitchenATPdatabases.autonomous_databases
-}
-
-output "parallel_connection_string" {
-  value = [lookup(oci_database_autonomous_database.FoggyKitchenATPdatabase.connection_strings.0.all_connection_strings, "PARALLEL", "Unavailable")]
-}

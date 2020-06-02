@@ -24,4 +24,10 @@ resource "oci_apigateway_deployment" "FoggyKitchenAPIGatewayDeployment" {
   }
 }
 
+data "oci_apigateway_deployment" "FoggyKitchenAPIGatewayDeployment" {
+    deployment_id = oci_apigateway_deployment.FoggyKitchenAPIGatewayDeployment.id
+}
 
+output "FoggyKitchenAPIGatewayDeployment_EndPoint" {
+  value = [data.oci_apigateway_deployment.FoggyKitchenAPIGatewayDeployment.endpoint]
+}
