@@ -6,7 +6,7 @@ In this repository I have documented my hands-on experience with Terrafrom for t
 
 ## Topology Diagram 
 
-With the usage of this example HCL code you can build topology documented by diagram below. This topology is extremly simplified for education purposes and rather cannot be used for production implementations. For accessing ATP I am using two functions (first function SetupATPFn for creating app user and customer table, second one CustomersFn for giving query capablity to ATP-based Customers table). Ultimately CustomerFn function is exposed to external world via OCI API Gateway. 
+With the usage of this example HCL code you can build topology documented by diagram below. This topology is extremly simplified for education purposes and rather cannot be used for production implementations. For accessing ATP I am using two functions (first function SetupATPFn for creating app user and customer table, second one CustomersFn for giving full Query/DML capability for Customers table nested in ATP instance). Ultimately CustomerFn function is exposed to external world via OCI API Gateway. 
 
 ![](terraform-oci-microservice.jpg)
 
