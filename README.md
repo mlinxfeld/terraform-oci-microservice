@@ -174,7 +174,7 @@ Confirm that CustomerFn is responding via API Gateway:
 
 #### USE CASE 1. SELECT statments ####
 
-Passing cust_id with the usage of GET method will result with set of records which fits the criteria:
+Passing cust_id with the usage of GET method will result with the record which fits the criteria:
 
 ```
 [opc@terraform-server terraform-oci-microservice]$ curl -k -X GET https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"2"}'
@@ -182,7 +182,7 @@ Passing cust_id with the usage of GET method will result with set of records whi
 {"message": {"Result": "[2, \"Second Customer\"]"}}
 ```
 
-If we want to select all of the records we should remove cust_id section:
+If we want to select all of the records from the table we need to remove cust_id section:
 
 ```
 [opc@terraform-server terraform-oci-microservice]$ curl -k -X GET https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers
