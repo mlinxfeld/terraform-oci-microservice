@@ -18,7 +18,7 @@ resource "oci_apigateway_deployment" "FoggyKitchenAPIGatewayDeployment" {
           type        = "ORACLE_FUNCTIONS_BACKEND"
           function_id = oci_functions_function.FoggyKitchenUpdateCustomersFn.id
       }
-      methods = ["GET","POST"]
+      methods = ["GET","POST","DELETE","PUT"]
       path    = "/customers"
     }
   }

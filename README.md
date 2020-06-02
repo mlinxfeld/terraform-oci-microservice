@@ -169,21 +169,61 @@ FoggyKitchenAPIGatewayDeployment_EndPoint = [
 ```
 
 ### STEP 6.
-Confirm that CustomerFn is responding via API Gateway. We are expecting that passing cust_id will result 
-with single record answer. If we skip cust_id input Microservice will respond with the whole content of the table:
+Confirm that CustomerFn is responding via API Gateway. 
+
+
+###USE CASE 1. SELECT statments###
+
+Passing cust_id with the usage of GET method will result with set of records which fits the criteria:
 
 ```
 [opc@terraform-server terraform-oci-microservice]$ curl -k -X GET https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"2"}'
 
 {"message": {"Result": "[2, \"Second Customer\"]"}}
+```
 
+If we want to select all of the records we should remove cust_id section:
+
+```
 [opc@terraform-server terraform-oci-microservice]$ curl -k -X GET https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers
 
 {"message": {"Result": "[[1, \"First Customer\"], [2, \"Second Customer\"], [3, \"Third Customer\"]]"}}
 
 ```
+###USE CASE 2. INSERT statments###
 
-We can also verify that in Postman as follows:
+Besides of GET which is for SELECT statements we can also add records by POST method:
+
+```
+[opc@terraform-server terraform-oci-microservice]$ curl -k -X POST https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"4", "cust_name":"Fourth Customer"}'
+
+{"message": {"Result": "Row inserted (cust_id=4, cust_name=Fourth Customer)"}}
+
+```
+
+###USE CASE 3. UPDATE statments###
+
+We can update record by PUT method:
+
+```
+[opc@terraform-server terraform-oci-microservice]$ curl -k -X PUT https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"4", "cust_name":"Fourth Customer UPDATED"}'
+
+{"message": {"Result": "Row updated (cust_id=4, cust_name=Fourth Customer UPDATED)"}}
+
+```
+
+###USE CASE 4. DELETE statments###
+
+We can update record by PUT method:
+
+```
+[opc@terraform-server terraform-oci-microservice]$ curl -k -X DELETE https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"4"}'
+
+{"message": {"Result": "Row deleted (cust_id=4)"}}
+
+```
+
+Alternative approach is to use Postman GUI as follows:
 
 ![](postman_test.jpg)
 
