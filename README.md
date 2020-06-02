@@ -172,7 +172,7 @@ FoggyKitchenAPIGatewayDeployment_EndPoint = [
 Confirm that CustomerFn is responding via API Gateway: 
 
 
-#### USE CASE 1. SELECT statments ####
+#### USE CASE 1. SELECT ####
 
 Passing cust_id with the usage of GET method will result with the record which fits the criteria:
 
@@ -190,7 +190,7 @@ If we want to select all of the records from the table we need to remove cust_id
 {"message": {"Result": "[[1, \"First Customer\"], [2, \"Second Customer\"], [3, \"Third Customer\"]]"}}
 
 ```
-#### USE CASE 2. INSERT statment ####
+#### USE CASE 2. INSERT ####
 
 Besides of GET which is for SELECT statements we can also add records by POST method:
 
@@ -201,7 +201,7 @@ Besides of GET which is for SELECT statements we can also add records by POST me
 
 ```
 
-#### USE CASE 3. UPDATE statment ####
+#### USE CASE 3. UPDATE ####
 
 We can update record by PUT method:
 
@@ -212,7 +212,7 @@ We can update record by PUT method:
 
 ```
 
-#### USE CASE 4. DELETE statment ####
+#### USE CASE 4. DELETE ####
 
 We can update record by PUT method:
 
