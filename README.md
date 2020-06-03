@@ -195,7 +195,7 @@ If we want to select all of the records from the table we need to remove cust_id
 Besides of GET which is for SELECT statements we can also add records by POST method:
 
 ```
-[opc@terraform-server terraform-oci-microservice]$ curl -k -X POST https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_id":"4", "cust_name":"Fourth Customer"}'
+[opc@terraform-server terraform-oci-microservice]$ curl -k -X POST https://bh6fdgwzzzs5ktzlre62b6pq7m.apigateway.us-ashburn-1.oci.customer-oci.com/v1/customers -d '{"cust_name":"Fourth Customer"}'
 
 {"message": {"Result": "Row inserted (cust_id=4, cust_name=Fourth Customer)"}}
 

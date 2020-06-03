@@ -33,7 +33,7 @@ def handler(ctx, data: io.BytesIO=None):
             cust_name = str(body.get("cust_name"))
         except (Exception, ValueError) as ex:
             print(str(ex))
-        resp = insert_customer(cust_id, cust_name)
+        resp = insert_customer(cust_name)
 
     return response.Response(
         ctx, response_data=json.dumps(
@@ -102,7 +102,7 @@ def update_customer(cust_id, cust_name):
 
     return {"Result": "Row updated (cust_id={}, cust_name={})".format(cust_id, cust_name),}
 
-def insert_customer(cust_id, cust_name):
+def insert_customer(cust_name):
     
     try: 
         atp_user = os.getenv('OCIFN_ATP_USER')
@@ -111,12 +111,14 @@ def insert_customer(cust_id, cust_name):
 
         connection = cx_Oracle.connect(atp_user, atp_password, atp_alias)
         cursor = connection.cursor()
-        if cust_id != "All":
-            rs = cursor.execute("insert into customers values ({},'{}')".format(cust_id, cust_name))
-            rs = cursor.execute('COMMIT')
+        rs = cursor.execute("select customers_seq.nextval from dual")
+        rows = rs.fetchone()
+        new_cust_id = str(rows).replace(',','')
+        rs = cursor.execute("insert into customers values ({},'{}')".format(new_cust_id, cust_name))
+        rs = cursor.execute('COMMIT')
         cursor.close()
         connection.close()
     except Exception as e:
         return {"Result": "Not connected to ATP! Exception: {}".format(str(e)),}
 
-    return {"Result": "Row inserted (cust_id={}, cust_name={})".format(cust_id, cust_name),}
+    return {"Result": "Row inserted (cust_id={}, cust_name={})".format(new_cust_id, cust_name),}
