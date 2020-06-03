@@ -51,11 +51,11 @@ def select_customer(cust_id):
         connection = cx_Oracle.connect(atp_user, atp_password, atp_alias)
         cursor = connection.cursor()
         if cust_id == "All":
-            rs = cursor.execute("select * from customers")
+            rs = cursor.execute("select * from customers order by cust_id")
             rows = rs.fetchall()
         else:
             rs = cursor.execute("select * from customers where cust_id={}".format(cust_id))
-            rows = rs.fetchone()
+            rows = rs.fetchall()
         json_output = json.dumps(rows)
         cursor.close()
         connection.close()
