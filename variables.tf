@@ -4,8 +4,6 @@ variable "fingerprint" {}
 variable "private_key_path" {}
 variable "compartment_ocid" {}
 variable "region" {}
-variable "private_key_oci" {}
-variable "public_key_oci" {}
 variable "atp_password" {}
 variable "atp_admin_password" {}
 
@@ -23,15 +21,6 @@ variable "VCN-CIDR" {
 
 variable "VCNname" {
   default = "VCN"
-}
-
-variable "Shapes" {
-  default = ["VM.Standard.E2.1", "VM.Standard.E2.1.Micro", "VM.Standard2.1", "VM.Standard.E2.1", "VM.Standard.E2.2"]
-}
-
-variable "OsImage" {
-  # Oracle-Linux-7.7-2020.02.21-0 in Frankfurt
-  default = "Oracle-Linux-7.7-2020.02.21-0"
 }
 
 variable "httpx_ports" {
