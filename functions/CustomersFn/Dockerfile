@@ -1,6 +1,7 @@
 FROM oraclelinux:7-slim as ol7
 
 RUN  yum -y install yum-utils && \
+     yum -y install oracle-release-el7 && \
      yum-config-manager --enable ol7_oracle_instantclient && \
      yum -y install oracle-instantclient18.3-basic && \
      yum install -y unzip && \
