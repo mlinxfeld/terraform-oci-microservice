@@ -9,10 +9,10 @@ resource "null_resource" "FoggyKitchenSetupATPFnPush2OCIR" {
     command = "cp ${var.FoggyKitchen_ATP_tde_wallet_zip_file} functions/SetupATPFn/" 
   }
 
-  provisioner "local-exec" {
-    command = "image=$(docker images | grep setupatpfn | awk -F ' ' '{print $3}') ; docker rmi -f $image &> /dev/null"
-    working_dir = "functions/SetupATPFn"
-  }
+  #provisioner "local-exec" {
+  #  command = "image=$(docker images | grep setupatpfn | awk -F ' ' '{print $3}') ; docker rmi -f $image &> /dev/null"
+  #  working_dir = "functions/SetupATPFn"
+  #}
 
   provisioner "local-exec" {
     command = "fn build --verbose --build-arg ARG_ADMIN_ATP_PASSWORD=${var.atp_admin_password} --build-arg ARG_ATP_USER=${var.atp_user} --build-arg ARG_ATP_PASSWORD=${var.atp_password} --build-arg ARG_ATP_ALIAS=${var.FoggyKitchen_ATP_database_db_name}_medium"
@@ -42,10 +42,10 @@ resource "null_resource" "FoggyKitchenCustomerFnPush2OCIR" {
     command = "cp ${var.FoggyKitchen_ATP_tde_wallet_zip_file} functions/CustomersFn/" 
   }
 
-  provisioner "local-exec" {
-    command = "image=$(docker images | grep customersfn | awk -F ' ' '{print $3}') ; docker rmi -f $image &> /dev/null"
-    working_dir = "functions/CustomersFn"
-  }
+  #provisioner "local-exec" {
+  #  command = "image=$(docker images | grep customersfn | awk -F ' ' '{print $3}') ; docker rmi -f $image &> /dev/null"
+  #  working_dir = "functions/CustomersFn"
+  #}
   
   provisioner "local-exec" {
     command = "fn build --verbose --build-arg ARG_ATP_USER=${var.atp_user} --build-arg ARG_ATP_PASSWORD=${var.atp_password} --build-arg ARG_ATP_ALIAS=${var.FoggyKitchen_ATP_database_db_name}_medium"
