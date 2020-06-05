@@ -73,7 +73,7 @@ is 0.12.17. You can update by downloading from https://www.terraform.io/download
 
 ### STEP 2a.
 
-If you are not using OCI Cloud Shell you need to install Docker Engine (required for docker login/build/push commands embeded in Terraform HCL code):
+If you are not using OCI Cloud Shell you need to install Docker Engine on your terraform server (required for docker login/build/push commands embeded in Terraform HCL code):
 
 ```
 
@@ -101,7 +101,7 @@ If you are not using OCI Cloud Shell you need to install Docker Engine (required
 
 ### STEP 2b.
 
-If you are not using OCI Cloud Shell you need to install fnProject (required for fn build command embeded in Terraform HCL code):
+If you are not using OCI Cloud Shell you need to install fnProject on your terraform server (required for fn build command embeded in Terraform HCL code):
 
 ```
 [opc@terraform-server ~]# curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
