@@ -71,6 +71,50 @@ Your version of Terraform is out of date! The latest version
 is 0.12.17. You can update by downloading from https://www.terraform.io/downloads.html
 ```
 
+### STEP 2a.
+
+If you are not using OCI Cloud Shell you need to install Docker Engine (required for docker login/build/push commands embeded in Terraform HCL code):
+
+```
+
+[opc@terraform-server terraform-oci-microservice]$ sudo su -
+
+[root@terraform-server terraform-oci-microservice]$ yum update
+
+[root@terraform-server terraform-oci-microservice]$ yum install yum-utils
+
+[root@terraform-server terraform-oci-microservice]$ yum-config-manager --enable *addons
+
+[root@terraform-server terraform-oci-microservice]$ yum install docker-engine
+
+[root@terraform-server terraform-oci-microservice]$ groupadd docker
+
+[root@terraform-server terraform-oci-microservice]$ service docker restart
+
+[root@terraform-server terraform-oci-microservice]$ usermod -a -G docker opc
+
+[root@terraform-server terraform-oci-microservice]$ exit
+
+[opc@terraform-server terraform-oci-microservice]$ exit
+
+```
+
+### STEP 2b.
+
+If you are not using OCI Cloud Shell you need to install fnProject (required for fn build command embeded in Terraform HCL code):
+
+```
+[opc@terraform-server ~]# curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+fn version 0.5.97
+
+        ______
+       / ____/___
+      / /_  / __ \
+     / __/ / / / /
+    /_/   /_/ /_/`
+
+```
+
 ### STEP 3. 
 Next create environment file with TF_VARs:
 
